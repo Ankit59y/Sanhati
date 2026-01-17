@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sanhati</title>
+    <style>
+        /* 1. Basic Reset and Body Styling */
+        body {
+            background-color: #f7e6e6; /* Soft pink background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+
+        /* 2. The Envelope Container */
+        .container {
+            position: relative;
+        }
+
+        .envelope-wrapper {
+            background: #ff5e5e;
+            box-shadow: 0 0 40px rgba(0,0,0,0.2);
+            position: relative;
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+        }
+
+        /* 3. The Envelope Flaps */
+        .envelope-wrapper:after {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 100px solid #ff5e5e; 
+            border-top: 100px solid transparent;
+            transform: translateY(100px);
+        }
+
+        .envelope-wrapper:before {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            border-left: 150px solid #ff4d4d; 
+            border-right: 150px solid #ff4d4d;
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+        }
+
+        .flap {
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            left: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 100px solid #ff3333;
+            border-bottom: 100px solid transparent;
+            transform-origin: top;
+            transition: 0.6s ease-in-out;
+        }
+
+        /* 4. The Letter Inside */
+        .letter {
+            position: absolute;
+            background: #fff;
+            width: 270px;
+            height: 180px;
+            top: 10px;
+            left: 15px;
+            transition: 0.8s ease-in-out;
+            z-index: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .letter img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #ff5e5e;
+            margin-bottom: 15px;
+            display: none; 
+        }
+
+        .text {
+            font-size: 10px;
+            color: #333;
+            line-height: 1.5;
+            opacity: 0; 
+            transition: opacity 0.5s 0.5s;
+            text-align: left; /* Aligned left for easier reading of long text */
+        }
+
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            z-index: 4;
+            transform: translate(-50%, -20%) rotate(45deg);
+            box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+            transition: 0.6s;
+        }
+        
+        .heart:before, 
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .heart:before { top: -7.5px; left: 0; }
+        .heart:after { left: -7.5px; top: 0; }
+
+        /* 5. Animation States */
+        .open .flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .open .letter {
+            height: 520px; /* Made taller to fit the new text */
+            transform: translateY(-200px); /* Moves up higher */
+            z-index: 4;
+            overflow-y: auto; /* Adds scroll if needed */
+        }
+
+        .open .letter img {
+            display: block;
+        }
+
+        .open .text {
+            opacity: 1;
+            font-size: 14px;
+        }
+
+        .open .heart {
+            opacity: 0;
+        }
+
+        .instruction {
+            position: absolute;
+            bottom: 20px;
+            color: #888;
+            font-size: 14px;
+            animation: bounce 2s infinite;
+        }
+
+        /* Custom Scrollbar for the letter */
+        .letter::-webkit-scrollbar {
+            width: 6px;
+        }
+        .letter::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .letter::-webkit-scrollbar-thumb {
+            background: #ff5e5e; 
+            border-radius: 3px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="envelope-wrapper" onclick="openEnvelope()">
+            <div class="flap"></div>
+            <div class="heart"></div>
+            
+            <div class="letter">
+                <img src="WhatsApp Image 2025-12-29 at 9.34.09 PM.jpeg" alt="Sanhati">
+                
+                <div class="text">
+                    <strong>To Sanhati,</strong>
+                    <br><br>
+                    Today is our last day as classmates, but I hope it is not our last day as partners. You are my best friend, my life, and the best gift I have ever received.
+                    <br><br>
+                    When I go to sleep, my last thought is of you. When I wake up, my first thought is of you. I admire everything about you and I follow your every way.
+                    <br><br>
+                    Everyone gives their partner a greeting card, but I am very shy. I wanted to do something special and extraordinary for you. 
+                    <br><br>
+                    So, I made this for you. 
+                    <br><br>
+                    It is not just a bunch of code; it is a reason to drink high caffeine and 15 nights of gathering the courage to make this for you.
+                    <br><br>
+                    <strong>"If we are in long distance, please always keep my hand as you are holding mine now. Never leave me alone. Because I can't even think or live a day without you and your gestures."</strong>
+                    <br><br>
+                    — Your fellow lover,<br>
+                    <strong>Ankit Das</strong><br>
+                    (Your Biggest Fan)
+                </div>
+            </div>
+        </div>
+        <div class="instruction">Click to open</div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            const envelope = document.querySelector('.container');
+            envelope.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>
